@@ -11,7 +11,7 @@ droopescan scan drupal -u http://drupal.inlanefreight.local -o json | python3 gu
 ```
 
 # how does it work??
-The script compares the available files found by droopescan to all tages releases on git.drupalcode.org - trying to guess the version. It also tells if a guessed release is tagged as "insecure"
+The script compares the available files found by droopescan to all tagged releases on git.drupalcode.org - trying to guess the version. It also tells if a guessed release is tagged as "insecure"
 
 # why?
 I wanted a script to automate looking up plugin versions - also:
