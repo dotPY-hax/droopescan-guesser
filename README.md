@@ -3,6 +3,12 @@ This script tries to guess Drupal plugin versions from droopsescan output
 
 # usage
 All you have to do is pipe the JSON output from droopsescan to the scripts stdin
+![](https://github.com/dotPY-hax/droopsescan-guesser/blob/main/drupal_guesser.png?raw=true)
+
+```bash
+droopescan scan drupal -u http://drupal.inlanefreight.local -o json | python3 guesser.py
+
+```
 
 # how does it work??
 The script compares the available files found by droopescan to all tages releases on git.drupalcode.org - trying to guess the version. It also tells if a guessed release is tagged as "insecure"
