@@ -1,9 +1,9 @@
-# droopsescan-guesser
-This script tries to guess Drupal plugin versions from droopsescan output
+# droopescan-guesser
+This script tries to guess Drupal plugin versions from droopescan output
 
 # usage
-All you have to do is pipe the JSON output from droopsescan to the scripts stdin
-![](https://github.com/dotPY-hax/droopsescan-guesser/blob/main/drupal_guesser.png?raw=true)
+All you have to do is pipe the JSON output from droopescan to the scripts stdin
+![](https://github.com/dotPY-hax/droopescan-guesser/blob/main/drupal_guesser.png?raw=true)
 
 ```bash
 droopescan scan drupal -u http://drupal.inlanefreight.local -o json | python3 guesser.py
