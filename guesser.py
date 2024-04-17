@@ -6,6 +6,8 @@ import hashlib
 
 import requests
 
+MAX_WORKERS = None
+
 
 class Plugins:
     def __init__(self, droopescan_json):
@@ -22,7 +24,7 @@ class Plugins:
         self.guess_versions()
 
     def init_plugins(self):
-        with ThreadPoolExecutor(max_workers=len(self.plugins)) as executor:
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             futures = []
             for plugin in self.plugins:
                 futures.append(executor.submit(plugin.request_tags))
@@ -37,7 +39,7 @@ class Plugins:
                     future_futures.append((plugin_version.request_file, target_file))
                 future_futures.append((plugin.target_version.request_file, target_file))
 
-        with ThreadPoolExecutor(max_workers=len(future_futures)) as executor:
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             futures = []
             for future_future in future_futures:
                 method, target_file = future_future
@@ -56,7 +58,7 @@ class Plugins:
             for plugin_version in plugin.guessed_versions:
                 future_futures.append(plugin_version.request_insecure_tag)
 
-        with ThreadPoolExecutor(max_workers=len(future_futures)) as executor:
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             futures = []
             for future_future in future_futures:
                 futures.append(executor.submit(future_future))
